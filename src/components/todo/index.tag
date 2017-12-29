@@ -29,19 +29,33 @@
   </style>
 
   <script>
-    this.items = {}
+    import axios from 'axios'
+    this.items = []
+
+    // life cycle
+    this.on("before-mount", async () => {
+      const res = await axios.get("/api/article")
+      this.items = res.data.articles
+      this.update()
+    })
 
     add() {
       const input = this.refs.input
-      const id = Math.random() * 10
-      this.items[id] = {
-        text: input.value,
-        done: false
-      }
-      input.value = ""
+      axios.post("/api/article", {
+        text: input.value
+      })
+      .then((res) => {
+        this.items = res.data.articles
+        this.update()
+        input.value = ""
+      })
     }
     remove(e) {
-      console.log(e.item)
+      axios.delete(`/api/article/${e.item.item.id}`)
+      .then((res) => {
+        this.items = res.data.articles
+        this.update()
+      })
     }
   </script>
 </todo>
