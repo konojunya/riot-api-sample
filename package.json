@@ -5,7 +5,8 @@
   "main": "webpack.config.js",
   "scripts": {
     "build": "webpack --color --progress",
-    "build:watch": "npm run build -- --watch"
+    "build:watch": "npm run build -- --watch",
+    "server": "pm2 start --no-daemon pm2/config.json"
   },
   "repository": {
     "type": "git",
@@ -30,6 +31,7 @@
     "axios": "^0.17.1",
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
+    "pm2": "^2.9.1",
     "riot": "^3.8.1"
   }
 }

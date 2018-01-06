@@ -1,0 +1,13 @@
+{
+  "apps": [{
+    "name": "riot-api-sample",
+    "script": "server.js",
+    "exec_mode": "cluster_mode",
+    "merge_logs": true,
+    "log_date_format": "YYYY-MM-DD HH:mm Z",
+    "watch": [
+      "server.js"
+    ],
+    "interpreter_args": "--harmony --no-warnings --inspect"
+  }]
+}
